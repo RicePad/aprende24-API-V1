@@ -8,6 +8,8 @@ django = "*"
 gunicorn = "==19.9.0"
 psycopg2-binary = "*"
 pillow = "*"
+boto3= "==1.9.38"
+django-storages= "==1.7.1"
 
 [dev-packages]
 psycopg2 = "*"
