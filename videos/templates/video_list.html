@@ -1,0 +1,12 @@
+{% extends "base.html"%}
+
+{% block content %}
+  {% for video in videos %}
+    <h1>{{ video.title }}</h1>
+    <p>{{ video.summary }}</p>
+    <img src="{{video.thumbnail_image.url}}" alt="">
+    <video src="{{video.video_file.urk}}" autoplay poster="posterimage.jpg" type='video/mov'>
+
+    </video>
+  {% endfor %}
+{% endblock %}
