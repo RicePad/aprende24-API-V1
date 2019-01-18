@@ -5,5 +5,5 @@ from .models import VideoTutorial
 
 class VideoCreateView(CreateView):
     model = VideoTutorial
-    fields = ("title", "summary", "thumbnail_image")
+    fields = ("title", "summary", "thumbnail_image", "video_file")
     template_name = 'video_form.html'
