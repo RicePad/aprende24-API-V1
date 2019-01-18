@@ -154,8 +154,8 @@ if USE_S3:
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
     DEFAULT_FILE_STORAGE = 'aprende24.storage_backends.PublicMediaStorage'
     # s3 private media settings
-    PRIVATE_MEDIA_LOCATION = 'private'
-    PRIVATE_FILE_STORAGE = 'aprende24.storage_backends.PrivateMediaStorage'
+    # PRIVATE_MEDIA_LOCATION = 'private'
+    # PRIVATE_FILE_STORAGE = 'aprende24.storage_backends.PrivateMediaStorage'
 else:
     STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
