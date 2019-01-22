@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'videos',
     'upload',
+    'courses',
     'storages',
 ]
 
