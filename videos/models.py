@@ -13,7 +13,7 @@ class VideoTutorial(models.Model):
 
 
     def get_absolute_url(self):
-        return reverse("home")
+        return reverse("video_list")
 
     def __str__(self):
         return self.title

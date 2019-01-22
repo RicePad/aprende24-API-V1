@@ -20,9 +20,11 @@ from .views import HomeView
 from django.conf import settings
 from django.conf.urls.static import static
 from upload import views
+from videos.views import VideoListView
 
 urlpatterns = [
     path('', views.image_upload, name="upload"),
+    path('videos/', VideoListView.as_view(), name="video_list"),
     path('admin/', admin.site.urls),
     path('home/', HomeView.as_view(), name="home"),
     path('videos/',include('videos.urls')),
