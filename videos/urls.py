@@ -7,5 +7,4 @@ urlpatterns = [
     path('', views.VideoListView.as_view(), name="video_list"),
     path('new/', views.VideoCreateView.as_view(), name="new"),
 
-
 ]

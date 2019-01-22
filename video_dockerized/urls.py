@@ -16,12 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from videos import urls
-from . import views
+from .views import HomeView
 from django.conf import settings
 from django.conf.urls.static import static
+from upload import views
 
 urlpatterns = [
+    path('', views.image_upload, name="upload"),
     path('admin/', admin.site.urls),
-    path('', views.HomeView.as_view(), name="home"),
+    path('home/', HomeView.as_view(), name="home"),
     path('videos/',include('videos.urls')),
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
