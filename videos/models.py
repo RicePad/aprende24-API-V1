@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from video_dockerized.storange_backends import PublicMediaStorage, PrivateMediaStorage
+from video_service.storange_backends import PublicMediaStorage, PrivateMediaStorage
 
 
 # Create your models here.

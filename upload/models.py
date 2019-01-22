@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-from video_dockerized.storange_backends import PublicMediaStorage, PrivateMediaStorage
+from video_service.storange_backends import PublicMediaStorage, PrivateMediaStorage
 
 class Upload(models.Model):
     upload_at = models.DateTimeField(auto_now_add=True)
