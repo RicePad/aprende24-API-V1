@@ -1,10 +1,12 @@
 {% extends "base.html"%}
 
 {% block content %}
+<h1>VIDEO LIST </h1>
   {% for video in videos %}
     <h1>{{ video.title }}</h1>
     <p>{{ video.summary }}</p>
     <img src="{{video.thumbnail_image.url}}" alt="">
+
     <video width="600" height="600" autoplay controls>
       <source src="{{ video.video_file.url }}" type="video/mp4">
         Your browser does not support the video tag.
