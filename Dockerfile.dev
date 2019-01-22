@@ -13,8 +13,12 @@ RUN pip install pipenv
 COPY ./Pipfile /app/Pipfile
 RUN pipenv install --system --skip-lock
 RUN pip install psycopg2-binary
+
+#copy entrypoint.sh
+COPY ./entrypoint.sh /app/entrypoint.sh
+
 # Copy project
 COPY . /app/
 
 # run entrypoint.sh
-ENTRYPOINT ["/app/entrypoint.sh"]
+RUN ["chmod", "+x", "/app/entrypoint.sh"]

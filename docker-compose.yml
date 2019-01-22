@@ -27,11 +27,23 @@ services:
       - SQL_PORT=5432
       - DATABASE=postgres
       - USE_S3=TRUE
-      - AWS_ACCESS_KEY_ID=UPDATE_ME
-      - AWS_SECRET_ACCESS_KEY=UPDATE_ME
-      - AWS_STORAGE_BUCKET_NAME=UPDATE_ME
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_STORAGE_BUCKET_NAME=${AWS_STORAGE_BUCKET_NAME}
     depends_on:
-      - db
+        - db
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
+    ports:
+      - 1337:80
+    depends_on:
+      - web
+
 
 volumes:
   postgres_data:
+  static_volume:
+  media_volume:
