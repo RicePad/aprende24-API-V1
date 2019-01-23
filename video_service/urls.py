@@ -28,4 +28,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', HomeView.as_view(), name="home"),
     path('videos/',include('videos.urls')),
+    path('courses/', include('courses.urls', namespace='courses')),
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

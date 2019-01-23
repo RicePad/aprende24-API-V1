@@ -4,8 +4,8 @@ from django.urls import reverse
 # Create your models here.
 class Course(models.Model):
     slug = models.SlugField()
-    course_title = models.CharField(max_length=120)
-    course_description = models.TextField()
+    title = models.CharField(max_length=120)
+    description = models.TextField()
 
     def __str__(self):
         return self.course_title
@@ -16,7 +16,7 @@ class Course(models.Model):
 
 class Lesson(models.Model):
     slug = models.SlugField()
-    lesson_title = models.CharField(max_length=120)
+    title = models.CharField(max_length=120)
     course = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True)
     position = models.IntegerField()
     video_url = models.CharField(max_length=200)
