@@ -5,7 +5,7 @@ from .models import Course, Lesson
 # Create your views here.
 class CourseCreateView(CreateView):
     model = Course
-    fields = ("slug", "title", "description")
+    fields = ("title", "description")
     template_name = "course_form.html"
 
 class CourseListView(ListView):
