@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from video_service.storange_backends import PublicMediaStorage, PrivateMediaStorage
 
 # Create your models here.
 class Course(models.Model):
@@ -8,10 +9,10 @@ class Course(models.Model):
     description = models.TextField()
 
     def __str__(self):
-        return self.course_title
+        return self.title
 
     def get_absolute_url(self):
-        return reverse('video_list')
+        return reverse('course_list')
 
 
 class Lesson(models.Model):
@@ -20,11 +21,11 @@ class Lesson(models.Model):
     course = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True)
     position = models.IntegerField()
     video_url = models.CharField(max_length=200)
-    thumbnail_image = models.ImageField()
+    thumbnail_image = models.ImageField(storage=PublicMediaStorage())
 
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('home')
+        return reverse('course_list')
