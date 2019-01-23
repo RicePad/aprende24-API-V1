@@ -4,7 +4,7 @@ from video_service.storange_backends import PublicMediaStorage, PrivateMediaStor
 
 # Create your models here.
 class Course(models.Model):
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
     title = models.CharField(max_length=120)
     description = models.TextField()
 
@@ -12,11 +12,11 @@ class Course(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('course_list')
+        return reverse('course-list')
 
 
 class Lesson(models.Model):
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
     title = models.CharField(max_length=120)
     course = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True)
     position = models.IntegerField()

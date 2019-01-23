@@ -26,7 +26,7 @@ from courses.views import CourseListView
 urlpatterns = [
     path('', views.image_upload, name="upload"),
     path('videos/', VideoListView.as_view(), name="video_list"),
-    path('courses/', CourseListView.as_view(), name="course_list"),
+    path('courses/', CourseListView.as_view(), name="course-list"),
     path('admin/', admin.site.urls),
     path('home/', HomeView.as_view(), name="home"),
     path('videos/',include('videos.urls')),
