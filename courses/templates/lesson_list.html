@@ -1,0 +1,7 @@
+{% extends "base.html"%}
+
+{% block content %}
+  {% for lesson in lesson_list %}
+    <h2>{{ lesson.title }}</h2>
+  {% endfor %}
+{% endblock %}

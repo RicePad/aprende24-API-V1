@@ -10,7 +10,6 @@ class Course(models.Model):
     description = models.TextField()
     slug = models.SlugField(unique=True)
 
-
     def __str__(self):
         return self.title
 
@@ -30,10 +29,12 @@ class Lesson(models.Model):
     thumbnail_image = models.ImageField(storage=PublicMediaStorage())
     slug = models.SlugField(unique=True)
 
-
-
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title, allow_unicode=True)
+        return super(Lesson, self).save(*args, *kwargs)
 
     def get_absolute_url(self):
         return reverse('course_list')
