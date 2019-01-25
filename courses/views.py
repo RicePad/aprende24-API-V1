@@ -32,3 +32,8 @@ class LessonCreateView(CreateView):
                 "thumbnail_image",
                 )
     template_name = "lesson_form.html"
+
+class LessonDetailView(DetailView):
+    model = Lesson
+    context_object_name = "lesson_detail"
+    template_name = "lesson_detail.html"
