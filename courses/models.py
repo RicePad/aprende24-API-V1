@@ -37,4 +37,4 @@ class Lesson(models.Model):
         return super(Lesson, self).save(*args, *kwargs)
 
     def get_absolute_url(self):
-        return reverse('course_list')
+        return reverse('lesson-list')

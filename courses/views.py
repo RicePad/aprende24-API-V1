@@ -22,3 +22,13 @@ class LessonListView(ListView):
     model = Lesson
     context_object_name = "lesson_list"
     template_name = "lesson_list.html"
+
+class LessonCreateView(CreateView):
+    model = Lesson
+    fields = (  "title",
+                "course",
+                "position",
+                "video_url",
+                "thumbnail_image",
+                )
+    template_name = "lesson_form.html"

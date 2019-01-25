@@ -21,12 +21,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 from upload import views
 from videos.views import VideoListView
-from courses.views import CourseListView
+from courses.views import CourseListView, LessonListView
 
 urlpatterns = [
     path('', views.image_upload, name="upload"),
     path('videos/', VideoListView.as_view(), name="video_list"),
     path('courses/', CourseListView.as_view(), name="course-list"),
+    path('lessons/', LessonListView.as_view(), name="lesson-list"),
     path('admin/', admin.site.urls),
     path('home/', HomeView.as_view(), name="home"),
     path('videos/',include('videos.urls')),
