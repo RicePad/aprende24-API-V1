@@ -23,12 +23,13 @@ class Course(models.Model):
 
 
 class Lesson(models.Model):
-    slug = models.SlugField(unique=True)
     title = models.CharField(max_length=120)
     course = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True)
     position = models.IntegerField()
     video_url = models.CharField(max_length=200)
     thumbnail_image = models.ImageField(storage=PublicMediaStorage())
+    slug = models.SlugField(unique=True)
+
 
 
     def __str__(self):
