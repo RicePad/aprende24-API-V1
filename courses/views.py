@@ -25,6 +25,7 @@ class LessonListView(ListView):
 
 class LessonCreateView(CreateView):
     model = Lesson
+    context_object_name = "lesson_detail"
     fields = (  "title",
                 "course",
                 "position",

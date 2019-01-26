@@ -27,6 +27,7 @@ class Lesson(models.Model):
     position = models.IntegerField()
     video_url = models.CharField(max_length=200)
     thumbnail_image = models.ImageField(storage=PublicMediaStorage())
+    video_file = models.FileField(storage=PublicMediaStorage(), null=True, verbose_name="")
     slug = models.SlugField(unique=True)
 
     def __str__(self):
