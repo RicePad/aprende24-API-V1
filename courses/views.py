@@ -22,7 +22,6 @@ class CourseDetailView(DetailView):
         context = super(CourseDetailView, self).get_context_data(**kwargs)
         context["lesson_list"] = Lesson.objects.all()
         context["course_list"] = Course.objects.all()
-
         return context
 
 class LessonListView(ListView):
@@ -38,6 +37,7 @@ class LessonCreateView(CreateView):
                 "position",
                 "video_url",
                 "thumbnail_image",
+                "video_file"
                 )
     template_name = "lesson_form.html"
 

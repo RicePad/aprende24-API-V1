@@ -7,9 +7,4 @@
       <a href="{% url 'courses:course-detail' slug=course.slug %}">  {{ course.title }}</a>
     </h1>
   {% endfor %}
-
-  {% for lesson in course_list.lessons.all %}
-   {{lesson.title}}
-  {% endfor %}
-
 {% endblock %}

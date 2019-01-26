@@ -3,11 +3,7 @@
 {% block content %}
   <h1>{{course_detail.title}}</h1>
   <p>{{course_detail.description}}</p>
-
-
   {% for lesson in object.lessons %}
     <a href="{% url 'courses:lesson-detail' slug=lesson.slug %}"><li>{{lesson.title}}</li></a>
   {% endfor %}
-
-
 {% endblock %}
