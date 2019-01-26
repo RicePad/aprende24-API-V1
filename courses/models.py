@@ -21,6 +21,11 @@ class Course(models.Model):
         return reverse('course-list')
 
 
+    @property
+    def lessons(self):
+        return self.lesson_set.all().order_by('position')
+
+
 class Lesson(models.Model):
     title = models.CharField(max_length=120)
     course = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True)
