@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'upload',
     'courses',
     'storages',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

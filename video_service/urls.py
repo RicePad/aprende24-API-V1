@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 from upload import views
 from videos.views import VideoListView
 from courses.views import CourseListView, LessonListView
+from video_service.api import router
 
 urlpatterns = [
     path('', views.image_upload, name="upload"),
@@ -32,4 +33,6 @@ urlpatterns = [
     path('home/', HomeView.as_view(), name="home"),
     path('videos/',include('videos.urls')),
     path('courses/', include('courses.urls', namespace='courses')),
+    path('api/v1/', include(router.urls)),
+
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
