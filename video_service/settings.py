@@ -43,8 +43,16 @@ INSTALLED_APPS = [
     'upload',
     'courses',
     'storages',
-    'rest_framework'
+    'rest_framework',
+    'djoser',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
