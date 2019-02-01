@@ -3,8 +3,13 @@ import requests
 import json
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+import os
 
 
+CLOUDFARE_USER = os.getenv("CLOUDFARE_USER")
+CLOUDFARE_API = os.getenv("CLOUDFARE_API")
+CLOUDFARE_ZONE_ID = os.getenv("CLOUDFARE_ZONE_ID")
+CLOUDFARE_BASE_URL = os.getenv("CLOUDFARE_BASE_URL")
 
 cloudfare_headers = { 'Content-Type': 'application/json',
                       'X-Auth-Key' : CLOUDFARE_API,

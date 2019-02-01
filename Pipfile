@@ -13,6 +13,7 @@ django-storages= "==1.7.1"
 djangorestframework
 djoser
 requests
+python-dotenv
 
 [dev-packages]
 psycopg2 = "*"
