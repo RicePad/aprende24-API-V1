@@ -21,20 +21,6 @@ def get_cloudaflare_info():
     else:
         return None
 
-# if cloudfare_account_info is not None:
-#     # print("Here's your info: ")
-#     for k, v in cloudfare_account_info['result'][0].items():
-#         print('{0}:{1}'.format(k, v))
-#
-# else:
-#     print('[!] Request Failed')
-
-# print(cloudfare_account_info)
-
-# jsonToDictionary = json.dumps(cloudfare_account_info)
-# print(jsonToDictionary)
-# print("type:", type(cloudfare_account_info))
-
 cloudflare_account_info = get_cloudaflare_info()
 
 def list_all_cloudfare_data(request):
