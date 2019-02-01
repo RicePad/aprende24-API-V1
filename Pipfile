@@ -12,6 +12,7 @@ boto3= "==1.9.38"
 django-storages= "==1.7.1"
 djangorestframework
 djoser
+requests
 
 [dev-packages]
 psycopg2 = "*"
