@@ -23,6 +23,7 @@ from upload import views
 from videos.views import VideoListView
 from courses.views import CourseListView, LessonListView
 from video_service.api import router
+from video_service.views import list_all_cloudfare_data
 
 urlpatterns = [
     path('', views.image_upload, name="upload"),
@@ -35,5 +36,6 @@ urlpatterns = [
     path('courses/', include('courses.urls', namespace='courses')),
     path('api/v1/', include(router.urls)),
     path('api/auth', include('djoser.urls.authtoken')),
+    path('cloudflare', list_all_cloudfare_data, name="cloudflare")
 
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
