@@ -6,6 +6,7 @@ app_name = 'courses'
 urlpatterns = [
     path('', views.CourseListView.as_view(), name="course-list"),
     path('new/', views.CourseCreateView.as_view(), name="course-new"),
+    path('cloudflare_videos', views.show_cloudflare_listview, name="lesson-videos"),
     re_path(r'^lesson/(?P<pk>\d+)$', views.LessonDetailView.as_view(), name="lesson-detail"),
     re_path(r'(?P<pk>\d+)$', views.CourseDetailView.as_view(), name="course-detail"),
     path('<slug>', views.CourseDetailView.as_view(), name="course-detail"),

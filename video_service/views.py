@@ -16,9 +16,7 @@ cloudfare_headers = { 'Content-Type': 'application/json',
                       'X-Auth-Email': CLOUDFARE_USER ,}
 
 def get_cloudaflare_info():
-
     api_url = "{0}zones/{1}/media".format(CLOUDFARE_BASE_URL, CLOUDFARE_ZONE_ID)
-
     response = requests.get(api_url, headers=cloudfare_headers)
 
     if response.status_code == 200:
@@ -26,14 +24,12 @@ def get_cloudaflare_info():
     else:
         return None
 
-cloudflare_account_info = get_cloudaflare_info()
 
 def list_all_cloudfare_data(request):
-    cloudflare_info = cloudflare_account_info['result']
-    print("type:", type(cloudflare_info))
-    return render(request, "cloudflare_list.html", {"cloudflare_info": cloudflare_info})
+    cloudflare_info = get_cloudaflare_info()
+    # print("type:", type(cloudflare_info))
+    return render(request, "cloudflare_list.html", {"cloudflare_info": cloudflare_info['result']})
 
 # Create your views here.
-
 class HomeView(TemplateView):
     template_name = "home.html"
