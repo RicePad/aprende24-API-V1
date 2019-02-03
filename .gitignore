@@ -12,3 +12,5 @@ db.sqlite3
 /static
 /videos/static
 /.env
+/video_service/.env
+/bash.sh
