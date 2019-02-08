@@ -5,9 +5,11 @@ from .models import Course, Lesson
 #USE FOR CLOUDFLARE API REQUESTS
 import requests
 import json
+import os
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-import os
+from courses.forms import VideoUploadForm
+from tusclient import client
 
 #ENV VARIABLES FOR CLOUDFLARE API
 CLOUDFARE_USER = os.getenv("CLOUDFARE_USER")
@@ -46,6 +48,7 @@ class LessonListView(ListView):
     context_object_name = "lesson_list"
     template_name = "lesson_list.html"
 
+
 class LessonCreateView(CreateView):
     model = Lesson
     context_object_name = "lesson_detail"
@@ -83,3 +86,50 @@ def show_cloudflare_listview(request):
     lesson = Lesson.objects.all
     cloudflare_list = fetch_cloudflareAPI_video_list()
     return render(request, "cloudflare_list_videos.html", {"cloudflare_list_videos": cloudflare_list['result'], "lesson_list": lesson})
+
+def upload_video(request):
+
+# if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = VideoUploadForm(request.POST, request.FILES)
+       
+        video_file_url = request.FILES['video_file_url']
+        # print("values:" , request.FILES.values())
+        # print("keys:", request.FILES.keys())
+        # print(type(request.FILES))
+
+        # for key, value in request.FILES.items():
+        #     print('key: {0} value: {1}'.format(key, value))
+
+        # check whether it's valid:
+        if form.is_valid():
+            form.save()
+            # process the data into Cloudflare's API
+            
+
+            # FILE_PATH = "/Users/jonathan/Desktop/docker_apps/aprende24/content/"
+            # SINGLE_FILE_PATH = "/Users/jonathan/Desktop/docker_apps/aprende24/content/proposal.mp4"
+
+            TUS_ENDPOINT = "https://api.cloudflare.com/client/v4/zones/{0}/media".format(CLOUDFARE_ZONE_ID)
+            HEADERS = {'X-Auth-Key': CLOUDFARE_API,
+                       'X-Auth-Email': CLOUDFARE_USER}
+
+            CHUNK_SIZE = 5242880
+            my_client = client.TusClient(TUS_ENDPOINT,
+                                          headers=HEADERS)
+
+            # uploader = my_client.uploader(form, chunk_size=CHUNK_SIZE)
+            # fs = open(SINGLE_FILE_PATH)
+            uploader = my_client.uploader(video_file_url, chunk_size=CHUNK_SIZE)
+
+            uploader.upload()
+
+            # redirect to a new URL:
+            return HttpResponseRedirect('/lessons/')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = VideoUploadForm()
+
+    return render(request, 'upload_video_form.html', {'form': form})

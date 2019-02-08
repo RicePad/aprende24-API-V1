@@ -3,5 +3,41 @@
 {% block content %}
 
   <h1>Welcome to Aprende24 </h1>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Uppy</title>
+    <link href="https://transloadit.edgly.net/releases/uppy/v0.29.1/dist/uppy.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="drag-drop-area"></div>
+
+    <script src="https://transloadit.edgly.net/releases/uppy/v0.29.1/dist/uppy.min.js"></script>
+    <script>
+
+      var uppy = Uppy.Core()
+        let CLOUDFARE_USER = "hello@jonali.me"
+        let CLOUDFARE_API = "8cf79442d02535ab732745c9f6bd115fde2ef"
+        let CLOUDFARE_ZONE_ID = "03ebb1e08cc581768d70970176d4f2a7"
+        let CLOUDFARE_BASE_URL = "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/media"
+        .use(Uppy.Dashboard, {
+          inline: true,
+          target: '#drag-drop-area'
+        })
+        .use(Uppy.Tus, {
+          endpoint: 'https://api.cloudflare.com/client/v4/zones/03ebb1e08cc581768d70970176d4f2a7/media'
+          headers: {'X-Auth-Key': "8cf79442d02535ab732745c9f6bd115fde2ef",
+                    'X-Auth-Email':"hello@jonali.me"}
+
+
+        })
+
+
+      uppy.on('complete', (result) => {
+        console.log('Upload complete! We’ve uploaded these files:', result.successful)
+      })
+    </script>
+  </body>
+</html>
 
 {% endblock %}
