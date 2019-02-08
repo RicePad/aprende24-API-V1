@@ -46,3 +46,5 @@ class Lesson(models.Model):
 class Video(models.Model):
     video_file_url = models.FileField(upload_to="media/")
     
+    def __str__(self):
+        return self.video_file_url
