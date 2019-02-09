@@ -10,7 +10,6 @@ class Upload(models.Model):
         return self.file
 
 
-
 class UploadPrivate(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
     file = models.FileField(upload_to="media/")

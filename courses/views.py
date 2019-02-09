@@ -54,9 +54,8 @@ class LessonCreateView(CreateView):
     fields = (  "title",
                 "course",
                 "position",
-                "video_url",
                 "thumbnail_image",
-                "video_file"
+                "video_file_path"
                 )
     template_name = "lesson_form.html"
 
