@@ -1,6 +1,5 @@
 from django.db import models
 from django.urls import reverse
-from video_service.storange_backends import PublicMediaStorage, PrivateMediaStorage
 
 
 # Create your models here.
@@ -8,8 +7,8 @@ from video_service.storange_backends import PublicMediaStorage, PrivateMediaStor
 class VideoTutorial(models.Model):
     title = models.CharField(max_length=100)
     summary = models.TextField(max_length=500)
-    thumbnail_image = models.ImageField(storage=PublicMediaStorage())
-    video_file = models.FileField(storage=PublicMediaStorage(), null=True, verbose_name="")
+    thumbnail_image = models.ImageField(upload_to="media/")
+    video_file = models.FileField(upload_to="media/")
 
 
     def get_absolute_url(self):

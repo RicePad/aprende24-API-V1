@@ -14,22 +14,9 @@ services:
       - static_volume:/app/static
       - media_volume:/app/media
     ports:
-      - 1000:8000
+      - 1001:8000
     expose:
       - 8000
-    environment:
-      - SECRET_KEY=please_change_me
-      - SQL_ENGINE=django.db.backends.postgresql
-      - SQL_DATABASE=postgres
-      - SQL_USER=postgres
-      - SQL_PASSWORD=postgres
-      - SQL_HOST=db
-      - SQL_PORT=5432
-      - DATABASE=postgres
-      - USE_S3=TRUE
-      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
-      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
-      - AWS_STORAGE_BUCKET_NAME=${AWS_STORAGE_BUCKET_NAME}
     depends_on:
         - db
   nginx:

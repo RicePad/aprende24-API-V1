@@ -1,6 +1,5 @@
 from django.db import models
 from django.urls import reverse
-from video_service.storange_backends import PublicMediaStorage, PrivateMediaStorage
 from django.utils.text import slugify
 
 
@@ -28,9 +27,8 @@ class Lesson(models.Model):
     title = models.CharField(max_length=120)
     course = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True)
     position = models.IntegerField()
-    video_url = models.CharField(max_length=200)
-    thumbnail_image = models.ImageField(storage=PublicMediaStorage())
-    video_file = models.FileField(storage=PublicMediaStorage(), null=True, verbose_name="")
+    thumbnail_image = models.ImageField(upload_to="media/")
+    video_file = models.FileField(upload_to="media/")
     slug = models.SlugField(unique=True)
 
     def __str__(self):
