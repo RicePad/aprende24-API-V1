@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Upload a Video Lesson</h1>
+  <form action="{% url 'courses:video-upload' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input name="video_file" type="submit" value="Submit">
+  </form>
+{% endblock %}

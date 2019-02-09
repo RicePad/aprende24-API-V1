@@ -42,3 +42,9 @@ class Lesson(models.Model):
 
     def get_absolute_url(self):
         return reverse('lesson-list')
+
+class Video(models.Model):
+    video_file_url = models.FileField(upload_to="media/")
+    
+    def __str__(self):
+        return self.video_file_url
