@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
+from django.core.validators import FileExtensionValidator
 
 
 # Create your models here.
@@ -28,7 +29,7 @@ class Lesson(models.Model):
     course = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True)
     position = models.IntegerField()
     thumbnail_image = models.ImageField(upload_to="media/")
-    video_file_path = models.FileField(upload_to="media/")
+    video_file_path = models.FileField(upload_to="media/", validators=[FileExtensionValidator(allowed_extensions=['mp4','mkv','mov', 'avi', 'flv', 'mpg','wmv'])])
     slug = models.SlugField(unique=True)
 
     def __str__(self):

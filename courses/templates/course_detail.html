@@ -1,15 +1,18 @@
 {% extends "base.html"%}
 
 {% block content %}
+  <h1>Lesson Video List</h1>
   <h1>{{course_detail.title}}</h1>
   <p>{{course_detail.description}}</p>
+  
   {% for lesson in object.lessons %}
-    <a href="{% url 'courses:lesson-detail' slug=lesson.slug %}"><li>{{lesson.title}}</li></a>
+     <a href="{% url 'courses:lesson-detail' slug=lesson.slug %}"><li>{{lesson.title}}</li></a>
   {% endfor %}
 
-<div class="container">
-    <h3><a href="{% url 'courses:lesson-videos' %}"><li>Video Lessons</li></a></h3>
-</div>
-
-
+    <div class="container">
+        <h3><a href="{% url 'courses:lesson-videos' %}"><li>Video Lessons</li></a></h3>
+    </div>
+    <h3>
+        <a href="{% url 'courses:lesson-new' %}">Create a lesson</a>
+    </h3>
 {% endblock %}

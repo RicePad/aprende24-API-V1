@@ -15,25 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from videos import urls
 from .views import HomeView
 from django.conf import settings
 from django.conf.urls.static import static
-from videos.views import VideoListView
 from courses.views import CourseListView, LessonListView
 from video_service.api import router
 from video_service.views import list_all_cloudfare_data
 
 urlpatterns = [
-     path('', CourseListView.as_view(), name="lesson-list"),
+    path('', CourseListView.as_view(), name="lesson-list"),
     path('api/v1/', include(router.urls)),
     path('api/auth', include('djoser.urls.authtoken')),
-    path('videos/', VideoListView.as_view(), name="video_list"),
     path('courses/', CourseListView.as_view(), name="course-list"),
     path('lessons/', LessonListView.as_view(), name="lesson-list"),
     path('admin/', admin.site.urls),
     path('home/', HomeView.as_view(), name="home"),
-    path('videos/',include('videos.urls')),
     path('courses/', include('courses.urls', namespace='courses')),
     path('cloudflare', list_all_cloudfare_data, name="cloudflare"),
     
