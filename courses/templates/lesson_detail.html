@@ -6,7 +6,7 @@
   <p>{{ lesson_detail.video_url }}</p>
   <p>{{ lesson_detail.title }}</p>
   <img src="{{lesson_detail.thumbnail_image.url}}" alt="image">
-  <video width="600" height="600" src="{{ lesson_detail.video_file.url }}" type="video/mp4">
+  <video width="600" height="600" src="{{ lesson_detail.video_file_path.url }}" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 {% endblock %}
