@@ -7,4 +7,8 @@
       <a href="{% url 'courses:course-detail' slug=course.slug %}">  {{ course.title }}</a>
     </h1>
   {% endfor %}
+
+     <h3>
+        <a href="{% url 'courses:course-new' %}"> Create a Product</a>
+     </h3>
 {% endblock %}

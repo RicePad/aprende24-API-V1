@@ -1,40 +1,81 @@
-import requests
-import json
-from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+# #create a tuple of nodes
+# nodes = ('A', 'B', 'C', 'D', 'E')
+
+# #create a double dicitionary of distances
+# distances = {
+#   'C': {"A": 1, "B": 7, "D": 2},
+#   'A': {"B": 3, "C": 1},
+#   'D': {"B": 5, "C": 2, "E": 7},
+#   'B': {"A": 3, "B": 7, "B": 5},
+#   'E': {"B": 1, "D": 7},
+#   }
+
+# #loop through a dictionary of array
+# unvisited = {node: float("inf") for node in nodes }
+# #create an empty dictionary 
+# visited = {}
+# #choose a start point
+# current = "C"
+# #set distance 
+# currentDistance = 0 
+# #set starting and distance in dictionary
+# unvisited[current] = currentDistance
+
+# #Djikstra's Algorithm:
+
+# while True:
+#     for neighbour, distance in distances[current].items():
+#         print("k:{0}, v:{1}".format(neighbour, distance))
+
+#         if neighbour not in unvisited: continue
+#         newDistance = currentDistance + distance
+        
+#         if unvisited[neighbour] is float("inf") or unvisited[neighbour] > newDistance:
+#             unvisited[neighbour] = newDistance
+#     visited[current] = currentDistance
+#     print("visited", visited)
+
+#     del unvisited[current]
+#     print("unvisited:", unvisited)      
+
+#     if not unvisited: break
+#     candidates = [node for node in unvisited.items() if node[1]]
+#     print("candidates:", candidates)
+
+#     current, currentDistance = sorted(candidates, key = lambda x: x[1])[0]
+#     print("current:", current)
+#     print("currentDistance:", currentDistance)
+# print(visited)
 
 
-cloudfare_headers = { 'Content-Type': 'application/json',
-                      'X-Auth-Key' : CLOUDFARE_API,
-                      'X-Auth-Email': CLOUDFARE_USER ,
-}
+from collections import deque
+2	
+3	def person_is_seller(name):
+4	      return name[-1] == 'm'
+5	
+6	graph = {}
+7	graph["you"] = ["alice", "bob", "claire"]
+8	graph["bob"] = ["anuj", "peggy"]
+9	graph["alice"] = ["peggy"]
+10	graph["claire"] = ["thom", "jonny"]
+11	graph["anuj"] = []
+12	graph["peggy"] = []
+13	graph["thom"] = []
+14	graph["jonny"] = []
 
-def get_cloudaflare_info():
+def search(name):
+    search_queue = deque()
+    search_queue += graph[name]
 
-    api_url = "{0}zones/{1}/media".format(CLOUDFARE_BASE_URL, CLOUDFARE_ZONE_ID)
-    # api_url = "{0}accounts?page=1&per_page=20&direction=desc".format(CLOUDFARE_BASE_URL)
+    while search_queue:
+        person = search_queue.pop_left()
 
-
-    response = requests.get(api_url, headers=cloudfare_headers)
-
-    if response.status_code == 200:
-        return json.loads(response.content.decode('utf-8'))
-    else:
-        return None
-
-cloudfare_account_info = get_cloudaflare_info()
-
-# if cloudfare_account_info is not None:
-#     # print("Here's your info: ")
-#     for k, v in cloudfare_account_info['result'][0].items():
-#         print('{0}:{1}'.format(k, v))
-#
-# else:
-#     print('[!] Request Failed')
-
-# jsonToDictionary = json.dumps(cloudfare_account_info)
-# print(jsonToDictionary)
-
-def list_all_cloudfare_data(requests):
-    cloudfare_info = json.dumps(cloudfare_account_info)
-    return render(request, "cloudflare_list.html", {"cloudfare_info": cloudfare_info})
+        if person not in searched:
+            if person_is_seller(person):
+                print("person is seller")
+                return True
+            else:
+                search_queue += graph[person]
+                searched.append(person)
+    return False
+    
