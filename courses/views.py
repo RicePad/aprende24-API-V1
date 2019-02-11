@@ -58,6 +58,25 @@ class LessonCreateView(CreateView):
                 "video_file_path"
                 )
     template_name = "lesson_form.html"
+    success_url = "/lessons/"
+
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
+        # create a form instance and populate it with data from the request:        
+        video_file_url = form.cleaned_data.get('video_file_path')    
+        TUS_ENDPOINT = "https://api.cloudflare.com/client/v4/zones/{0}/media".format(CLOUDFARE_ZONE_ID)
+        HEADERS = {'X-Auth-Key': CLOUDFARE_API,
+                    'X-Auth-Email': CLOUDFARE_USER}
+
+        CHUNK_SIZE = 5242880
+        
+        my_client = client.TusClient(TUS_ENDPOINT, headers=HEADERS)
+        uploader = my_client.uploader(file_stream=video_file_url, chunk_size=CHUNK_SIZE)
+        uploader.upload()
+
+        # redirect to a new URL:
+        return super().form_valid(form)
 
 class LessonDetailView(DetailView):
     model = Lesson
