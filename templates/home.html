@@ -6,13 +6,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Uppy</title>
-    <link href="https://transloadit.edgly.net/releases/uppy/v0.29.1/dist/uppy.min.css" rel="stylesheet">
   </head>
   <body>
-    <div id="drag-drop-area"></div>
-
+      {% if user.is_authenticated %}
+       <h1> Hi {{ user.email }}!</h1>
+        <h1>
+          <a href="{% url 'courses:course-list' %}"> Checkout Course Lessons</a>
+        </h1>
+        <p><a href="{% url 'account_logout' %}">Log Out</a></p>
+      {% else %}
+        <p>You are not logged in</p>
+        <a href="{% url 'account_login' %}">Log In</a> |
+        <a href="{% url 'account_signup' %}">Sign Up</a>
+      {% endif %}
   </body>
-</html>
 
 {% endblock %}

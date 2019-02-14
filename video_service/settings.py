@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 from dotenv import load_dotenv
 load_dotenv()
+from django.urls import reverse_lazy
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -40,11 +42,29 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
     'courses',
+    'users',
     'rest_framework',
     'djoser',
+    'django_extensions',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount', # new
+
+
+    
 ]
+AUTH_USER_MODEL = 'users.CustomUser'
+
+#Redirect after Login and Logout
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = reverse_lazy('home')
+ACCOUNT_LOGOUT_REDIRECT_URL = 'home'
+
+
+
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
@@ -82,8 +102,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'video_service.wsgi.application'
 
+WSGI_APPLICATION = 'video_service.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
@@ -157,3 +177,22 @@ STATICFILES_DIR = [
 
 #MEDIA files
 MEDIA_URL = "/media/"
+
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+SITE_ID = 1
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_UNIQUE_EMAIL = True
