@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, View, CreateView
+from django.views.generic import ListView, DetailView, View, CreateView, UpdateView
 from .models import Course, Lesson, Video
 
 #USE FOR CLOUDFLARE API REQUESTS
@@ -42,6 +42,12 @@ class CourseDetailView(DetailView):
         context["lesson_list"] = Lesson.objects.all()
         context["course_list"] = Course.objects.all()
         return context
+
+class CourseUpdateView(UpdateView):
+    model = Course
+    fields = ['title', 'description']
+    template_name = "course_edit_form.html"
+
 
 class LessonListView(ListView):
     model = Lesson

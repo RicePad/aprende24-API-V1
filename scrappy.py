@@ -80,34 +80,34 @@
 #     return False
     
 #two sum algorithms
-list = [2, 7, 11, 15]
-target = 9
-#brute force 
-def twoSum_brute(list, target):
-    for i in range(len(list) - 1): #output: 0,1,2  -array index
-        for k in range(i+1, len(list)): # selects indexes starting at position 1
-            if list[i] + list[k] == target:
-                return[i,k]
-    return False
+# list = [2, 7, 11, 15]
+# target = 9
+# #brute force 
+# def twoSum_brute(list, target):
+#     for i in range(len(list) - 1): #output: 0,1,2  -array index
+#         for k in range(i+1, len(list)): # selects indexes starting at position 1
+#             if list[i] + list[k] == target:
+#                 return[i,k]
+#     return False
 
 
 
 
-result = twoSum_brute(list, target)
-print(result)    
+# result = twoSum_brute(list, target)
+# print(result)    
 
-def twoSum_hash(list, target):
-    hash_table = {}
+# def twoSum_hash(list, target):
+#     hash_table = {}
 
-    for i in range(len(list)): #outputs all array indexes
-        if list[i] in hash_table:
-            return [hash_table[list[i]], list[i]]
-        else:
-            hash_table[target - list[i]] = list[i]
-    return False
+#     for i in range(len(list)): #outputs all array indexes
+#         if list[i] in hash_table:
+#             return [hash_table[list[i]], list[i]]
+#         else:
+#             hash_table[target - list[i]] = list[i]
+#     return False
 
-result = twoSum_hash(list, target)
-print(result) 
+# result = twoSum_hash(list, target)
+# print(result) 
 
 
 #Reverse integer
@@ -115,7 +115,7 @@ print(result)
 # Example1: x = 123, return 321
 # Example2: x = -123, return -321
 
-numbers = 123 
+# numbers = 123 
 # numberString = str(numbers)
 # reverseString = numberString[::-1]
 # reverseNumber = int(reverseString)
@@ -142,21 +142,84 @@ numbers = 123
 #     return reverse
 
 
-def reverseNumber(number):
-        reverse = 0
+# def reverseNumber(number):
+#         reverse = 0
 
-    # Handling negative numbers  
-        negativeFlag = False
-        if (number < 0): 
+#     # Handling negative numbers  
+#         negativeFlag = False
+#         if (number < 0): 
         
-            negativeFlag = True
-            number = -number
+#             negativeFlag = True
+#             number = -number
 
-        while number != 0:   
-            last_digit = number % 10
-            reverse = (reverse * 10) + last_digit
-            number = int(number/10)
-        return -reverse if (negativeFlag == True) else reverse
+#         while number != 0:   
+#             last_digit = number % 10
+#             reverse = (reverse * 10) + last_digit
+#             number = int(number/10)
+#         return -reverse if (negativeFlag == True) else reverse
 
-r = reverseNumber(-124)
-print(r)
+# r = reverseNumber(-124)
+# print(r)
+
+
+
+
+# 123 ---> 321 reverse integer 
+
+# def reverse(number):
+#     #on/off boolean if number is negative
+
+#     numberIsNegative = False
+#     if number < 0:
+#         numberIsNegative = True
+#         number = -number
+
+#     #store reverse numbers
+#     reverse = 0
+    
+#     #if number is not zero keep looping
+#     while number != 0:
+#     #select last digit
+#         lastDigit = number % 10
+#         print("lastDigit:", lastDigit)
+#     #store last digit in reverse 
+#         reverse = ( reverse * 10 ) + lastDigit
+#         print("reverse:", reverse)
+#     #select next number in reverse
+#         number = int(number/10)
+#         print("number:", number)
+#     return -reverse if(numberIsNegative == True) else reverse
+
+
+# print(reverse(-123))
+
+#Roman to integer 
+total = 0
+roman_dic = {
+    "I": 1,
+    "V": 5,
+    "X": 10,
+    "L": 50,
+    "C": 100,
+    "D": 500,
+    "M": 1000
+}
+
+# 1 - 3999 range
+# def roman_to_int(string):
+#      roman_val = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+#      int_val = 0
+   
+#      for i in range(len(string)):
+#          int_val = int_val + roman_val[string[i]]
+#      return int_val
+
+
+# roman = roman_to_int("I")
+# print(roman)
+roman_val = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+string = "IX"
+x = roman_val[string[1-1]]
+print(x)
+
+
