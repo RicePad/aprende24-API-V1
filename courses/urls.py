@@ -6,6 +6,7 @@ app_name = 'courses'
 urlpatterns = [
     path('', views.CourseListView.as_view(), name="course-list"),
     path('update/<int:pk>/', views.CourseUpdateView.as_view(), name="course-update"),
+    path('update/<slug>/', views.CourseUpdateView.as_view(), name="course-update"),
     path('new/', views.CourseCreateView.as_view(), name="course-new"),
     path('cloudflare_videos', views.show_cloudflare_listview, name="lesson-videos"),
     re_path(r'^lesson/(?P<pk>\d+)$', views.LessonDetailView.as_view(), name="lesson-detail"),
@@ -16,4 +17,7 @@ urlpatterns = [
     path('lessons/new', views.LessonCreateView.as_view(), name="lesson-new"),
     path('lesson/<slug>', views.LessonDetailView.as_view(), name="lesson-detail"),
     path('lesson/<int:pk>/', views.LessonDetailView.as_view(), name="lesson-detail"),
+    path('lesson/update/<slug>', views.LessonUpdateView.as_view(), name="lesson-update"),
+    path('lesson/update/<int:pk>', views.LessonUpdateView.as_view(), name="lesson-update"),
+
 ]

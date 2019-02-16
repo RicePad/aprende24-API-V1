@@ -194,16 +194,16 @@
 # print(reverse(-123))
 
 #Roman to integer 
-total = 0
-roman_dic = {
-    "I": 1,
-    "V": 5,
-    "X": 10,
-    "L": 50,
-    "C": 100,
-    "D": 500,
-    "M": 1000
-}
+# total = 0
+# roman_dic = {
+#     "I": 1,
+#     "V": 5,
+#     "X": 10,
+#     "L": 50,
+#     "C": 100,
+#     "D": 500,
+#     "M": 1000
+# }
 
 # 1 - 3999 range
 # def roman_to_int(string):
@@ -217,9 +217,22 @@ roman_dic = {
 
 # roman = roman_to_int("I")
 # print(roman)
-roman_val = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
-string = "IX"
-x = roman_val[string[1-1]]
-print(x)
+# string = "IX"
+# int_value = 0
+# def romanToInteger(string):
+#     roman_val = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+#     int_value = 0
+
+#     #loop through the string 
+#     for i in range(len(string)):
+#         if i > 0 and roman_val[string[i]] > roman_val[string[i - 1]]:
+#             int_value = int_value + roman_val[string[i]] - 2 * roman_val[string[i - 1]]
+#         else:
+#             #if string in dictionary add value to int value variable
+#             int_value = int_value + roman_val[string[i]]
+#             print(int_value)
+#     return int_value
 
 
+# roman = romanToInteger(string)
+# print(roman)
