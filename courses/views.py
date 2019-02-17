@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, View, CreateView
+from django.views.generic import ListView, DetailView, View, CreateView, UpdateView
 from .models import Course, Lesson, Video
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 #USE FOR CLOUDFLARE API REQUESTS
 import requests
@@ -22,10 +24,16 @@ cloudflare_headers = { 'Content-Type': 'application/json',
                       'X-Auth-Email': CLOUDFARE_USER ,}
 
 # Create your views here.
-class CourseCreateView(CreateView):
+class CourseCreateView(LoginRequiredMixin,CreateView):
     model = Course
     fields = ("title", "description")
     template_name = "course_form.html"
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return super().form_valid(form)
 
 class CourseListView(ListView):
     model = Course
@@ -43,12 +51,18 @@ class CourseDetailView(DetailView):
         context["course_list"] = Course.objects.all()
         return context
 
+class CourseUpdateView(LoginRequiredMixin,UpdateView):
+    model = Course
+    fields = ['title', 'description']
+    template_name = "course_edit_form.html"
+
+
 class LessonListView(ListView):
     model = Lesson
     context_object_name = "lesson_list"
     template_name = "lesson_list.html"
 
-class LessonCreateView(CreateView):
+class LessonCreateView(LoginRequiredMixin,CreateView):
     model = Lesson
     context_object_name = "lesson_detail"
     fields = (  "title",
@@ -88,6 +102,31 @@ class LessonDetailView(DetailView):
         context["lesson_list"] = Lesson.objects.all()
         context["course_list"] = Course.objects.all()
         return context
+
+class LessonUpdateView(LoginRequiredMixin,UpdateView):
+    model = Lesson
+    fields = ['title', 'position', 'thumbnail_image', 'video_file_path',]
+    template_name = "lesson_edit_form.html"
+    success_url = "/lessons/"
+
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
+        # create a form instance and populate it with data from the request:        
+        video_file_url = form.cleaned_data.get('video_file_path')    
+        TUS_ENDPOINT = "https://api.cloudflare.com/client/v4/zones/{0}/media".format(CLOUDFARE_ZONE_ID)
+        HEADERS = {'X-Auth-Key': CLOUDFARE_API,
+                    'X-Auth-Email': CLOUDFARE_USER}
+
+        CHUNK_SIZE = 5242880
+        
+        my_client = client.TusClient(TUS_ENDPOINT, headers=HEADERS)
+        uploader = my_client.uploader(file_stream=video_file_url, chunk_size=CHUNK_SIZE)
+        uploader.upload()
+
+        # redirect to a new URL:
+        return super().form_valid(form)
+
 
 
 def fetch_cloudflareAPI_video_list():

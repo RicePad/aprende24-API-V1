@@ -9,4 +9,11 @@
   <video width="600" height="600" src="{{ lesson_detail.video_file_path.url }}" type="video/mp4">
     Your browser does not support the video tag.
   </video>
+
+  {% if user.is_authenticated and lesson_detail.course.user == user %}
+    <h3>
+      <a href="{% url 'courses:lesson-update' slug=lesson_detail.slug %}">Update Lesson</a>
+    </h3>
+  {% endif %}
+  
 {% endblock %}

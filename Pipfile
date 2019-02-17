@@ -12,6 +12,7 @@ djangorestframework= "*"
 djoser= "*"
 requests= "*"
 python-dotenv= "*"
+django-allauth = "*"
 
 [dev-packages]
 psycopg2 = "*"

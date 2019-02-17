@@ -24,14 +24,15 @@ from video_service.views import list_all_cloudfare_data
 
 urlpatterns = [
     path('', CourseListView.as_view(), name="lesson-list"),
+    path('accounts/', include('allauth.urls')),
     path('api/v1/', include(router.urls)),
     path('api/auth', include('djoser.urls.authtoken')),
     path('courses/', CourseListView.as_view(), name="course-list"),
     path('lessons/', LessonListView.as_view(), name="lesson-list"),
-    path('admin/', admin.site.urls),
     path('home/', HomeView.as_view(), name="home"),
     path('courses/', include('courses.urls', namespace='courses')),
     path('cloudflare', list_all_cloudfare_data, name="cloudflare"),
+    path('admin/', admin.site.urls),
     
 
 ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
