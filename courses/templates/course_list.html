@@ -9,7 +9,9 @@
    
   {% endfor %}
 
+ {% if user.is_authenticated %}
      <h3>
         <a href="{% url 'courses:course-new' %}"> Create a Product</a>
      </h3>
+  {% endif %}
 {% endblock %}
