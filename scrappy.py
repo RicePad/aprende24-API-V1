@@ -236,3 +236,21 @@
 
 # roman = romanToInteger(string)
 # print(roman)
+
+
+
+list = ["flower","flower"]
+
+#loop through the first string of the array 
+# def find_common_prefix(list):
+#     if not list:
+#         return "dasdas"
+#     for i in range(len(list[0])):
+#          char = list[0][i]
+#     for j in range(1,len(list)):
+#          print(j) #output position 1 
+#          print(len(list[j])) #output: 6
+#          if i == len(list[j]) or list[j][i] != char:
+#              return list[0][:i] 
+#     return list[0]        
+

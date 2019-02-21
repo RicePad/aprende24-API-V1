@@ -1,0 +1,10 @@
+Django>=2.0
+psycopg2-binary
+pillow
+djangorestframework
+djoser
+requests
+python-dotenv
+django-allauth
+django-extensions
+tuspy
