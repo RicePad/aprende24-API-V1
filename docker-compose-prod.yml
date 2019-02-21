@@ -1,0 +1,37 @@
+version: '3.7'
+services:
+  python:
+    build:
+      context: .
+      dockerfile: docker/production/python/Dockerfile
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - .:/app
+      - static_files:/static_files
+    ports:
+      - 8000:8000
+    command: gunicorn -w 4 video_service.wsgi -b 0.0.0.0:8000
+  postgres:
+    image: postgres:10.3
+    environment:
+      POSTGRES_USER: aprende24
+      POSTGRES_DB: aprende24
+      POSTGRES_PASS: aprende24
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/production/nginx/Dockerfile
+    volumes:
+      - static_files:/static_files
+    ports:
+      - 8080:80
+
+volumes:
+  pgdata:
+  static_files:
+

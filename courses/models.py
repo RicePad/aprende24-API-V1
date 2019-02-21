@@ -5,9 +5,6 @@ from django.core.validators import FileExtensionValidator
 from django.contrib.auth.models import User
 from django.conf import settings
 
-
-
-
 # Create your models here.
 class Course(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
@@ -20,7 +17,7 @@ class Course(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title, allow_unicode=True)
-        return super(Course, self).save(*args, *kwargs)
+        return super(Course, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('course-list')
@@ -42,7 +39,7 @@ class Lesson(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title, allow_unicode=True)
-        return super(Lesson, self).save(*args, *kwargs)
+        return super(Lesson, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('lesson-list')

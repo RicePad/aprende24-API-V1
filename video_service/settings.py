@@ -175,6 +175,7 @@ STATICFILES_DIR = [
     STATIC_DIR
 ]
 
+STATIC_ROOT = "/static_files/"
 #MEDIA files
 MEDIA_URL = "/media/"
 
