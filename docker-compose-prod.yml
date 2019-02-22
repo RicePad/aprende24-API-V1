@@ -11,13 +11,10 @@ services:
       - .:/app
       - static_files:/static_files
       - media_volume:/app/media
-    depends_on:
-        - postgres
     ports:
       - 8000:8000
     command: gunicorn -w 4 video_service.wsgi -b 0.0.0.0:8000
   postgres:
-    restart: always
     image: postgres:10.3
     environment:
       POSTGRES_USER: aprende24
