@@ -8,8 +8,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-# from dotenv import load_dotenv
-# load_dotenv()
+from dotenv import load_dotenv
+load_dotenv()
 from django.urls import reverse_lazy
 
 
@@ -96,7 +96,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
             ],
         },
-    },
+    }, 
 ]
 
 
