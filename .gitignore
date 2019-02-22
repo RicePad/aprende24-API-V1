@@ -14,3 +14,8 @@ db.sqlite3
 /.env
 /video_service/.env
 /bash.sh
+/video_service/settings/prod.py
+/video_service/settings/debug.log
+
+
+

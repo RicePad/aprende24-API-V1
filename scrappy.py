@@ -237,20 +237,71 @@
 # roman = romanToInteger(string)
 # print(roman)
 
-
-
-list = ["flower","flower"]
-
-#loop through the first string of the array 
-# def find_common_prefix(list):
-#     if not list:
-#         return "dasdas"
+#Common prefix algorithm:
+# list = ['flower', 'flow', 'florence']
+# def commonPrefix(list):
 #     for i in range(len(list[0])):
-#          char = list[0][i]
-#     for j in range(1,len(list)):
-#          print(j) #output position 1 
-#          print(len(list[j])) #output: 6
-#          if i == len(list[j]) or list[j][i] != char:
-#              return list[0][:i] 
-#     return list[0]        
+#         char = list[0][i]
+#         for j in range(1,len(list)):
+#             if i == len(list[j]) or list[j][i] != char:
+#                 return list[0][:i] 
+#     return list[0]
 
+# print(commonPrefix(list))
+
+
+#Valid parenthesis algorithm:
+# string = "()"
+# string2 = "()[]{}"
+# string3 = "(]"
+
+# # create a stack 
+# stack = []
+# #create a hash_table with k closing and v of opening
+# hash_table = {
+#     ")": "(",
+#     "}": "{",
+#     "]": "[", 
+# }
+
+# def isValid(string):
+#     stack = []
+    
+#     hash_table = {
+#     ")": "(",
+#     "}": "{",
+#     "]": "[", 
+#         }
+
+#     for char in string:
+#         if char in hash_table:
+#             top_element = stack.pop()   
+#             if hash_table[char] != top_element:
+#                 return False
+#         else:
+#             stack.append(char)
+#     return not stack
+
+
+#parenthesis checker
+string = "()"
+hash_table = {
+    ")": "(",
+    "}": "{",
+    "]": "[",
+}
+
+stack = []
+
+#loop and store each character of the string into a variable
+for char in string:
+    print(char)
+        #if parenthesis is closed  or in the dictionary
+    if char in hash_table:
+        #if parenthesis is opened insert into the stack
+        top_element = stack.pop() if stack else ""
+        if hash_table[char] != top_element:
+            print(False)
+    else:
+        stack.append(char)
+print(not stack)
