@@ -20,7 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from courses.views import CourseListView, LessonListView
 from video_service.api import router
-from video_service.views import list_all_cloudfare_data
+from video_service.views import list_all_cloudfare_data, HomeView
 
 urlpatterns = [
     path('', CourseListView.as_view(), name="lesson-list"),
