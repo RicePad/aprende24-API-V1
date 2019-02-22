@@ -5,6 +5,7 @@ services:
       context: .
       dockerfile: docker/production/python/Dockerfile
     environment:
+      - DJANGO_SETTINGS_MODULE=video_service.settings.prod
       - PYTHONUNBUFFERED=1
     volumes:
       - .:/app
