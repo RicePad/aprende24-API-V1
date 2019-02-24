@@ -30,8 +30,8 @@ class Lesson(models.Model):
     title = models.CharField(max_length=120)
     course = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True)
     position = models.IntegerField()
-    thumbnail_image = models.ImageField(upload_to="media/")
-    video_file_path = models.FileField(upload_to="media/", validators=[FileExtensionValidator(allowed_extensions=['mp4','mkv','mov', 'avi', 'flv', 'mpg','wmv'])])
+    thumbnail_image = models.ImageField(upload_to="thumbnail_images/")
+    video_file_path = models.FileField(upload_to="video_files/", validators=[FileExtensionValidator(allowed_extensions=['mp4','mkv','mov', 'avi', 'flv', 'mpg','wmv'])])
     slug = models.SlugField(unique=True)
 
     def __str__(self):

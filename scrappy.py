@@ -284,24 +284,51 @@
 
 
 #parenthesis checker
-string = "()"
-hash_table = {
-    ")": "(",
-    "}": "{",
-    "]": "[",
-}
+# string = "()"
+# hash_table = {
+#     ")": "(",
+#     "}": "{",
+#     "]": "[",
+# }
 
-stack = []
+# stack = []
 
-#loop and store each character of the string into a variable
-for char in string:
-    print(char)
-        #if parenthesis is closed  or in the dictionary
-    if char in hash_table:
-        #if parenthesis is opened insert into the stack
-        top_element = stack.pop() if stack else ""
-        if hash_table[char] != top_element:
-            print(False)
-    else:
-        stack.append(char)
-print(not stack)
+# #loop and store each character of the string into a variable
+# for char in string:
+#     print(char)
+#         #if parenthesis is closed  or in the dictionary
+#     if char in hash_table:
+#         #if parenthesis is opened insert into the stack
+#         top_element = stack.pop() if stack else ""
+#         if hash_table[char] != top_element:
+#             print(False)
+#     else:
+#         stack.append(char)
+# print(not stack)
+
+
+#merge two sorted list
+
+
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+class Solution(ListNode):
+    def mergeTwoLists(self, list1, list2):
+        dummy = cur = ListNode(0)
+
+        while list1 and list2:
+            if list1 < list2:
+                cur.next = list1
+                list1 = list1.next
+            else:
+                cur.next = list2
+                list2 = list2.next
+            cur = cur.next
+        cur = list1 or list2 
+        return dummy.next
+        
+    
+

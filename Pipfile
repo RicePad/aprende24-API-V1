@@ -13,6 +13,8 @@ djoser= "*"
 requests= "*"
 python-dotenv= "*"
 django-allauth = "*"
+boto3= "*"
+django-storages= "*"
 
 [dev-packages]
 psycopg2 = "*"
