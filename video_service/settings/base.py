@@ -110,8 +110,8 @@ WSGI_APPLICATION = 'video_service.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
+        'NAME': 'aprende24',
+        'USER': 'aprende24',
         'HOST': 'postgres', # set in docker-compose.yml
         'PORT': '5432' # default postgres port
     }
