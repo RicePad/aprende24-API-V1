@@ -307,28 +307,25 @@
 # print(not stack)
 
 
-#merge two sorted list
+#merge two sorted two sorted LinkedList
 
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
 
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
+# class Solution(ListNode):
+#     def mergeTwoLists(self, list1, list2):
+#         dummy = cur = ListNode(0)
 
-class Solution(ListNode):
-    def mergeTwoLists(self, list1, list2):
-        dummy = cur = ListNode(0)
-
-        while list1 and list2:
-            if list1 < list2:
-                cur.next = list1
-                list1 = list1.next
-            else:
-                cur.next = list2
-                list2 = list2.next
-            cur = cur.next
-        cur = list1 or list2 
-        return dummy.next
+        # while list1 and list2:
+        #     if list1.val < list2.val:
+        #         cur.next = list1
+        #         list1 = list1.next
+        #     else:
+        #         cur.next = list2
+        #         list2 = list2.next
+        #     cur = cur.next
+        # cur = list1 or list2 
+        # return dummy.next
         
-    
-

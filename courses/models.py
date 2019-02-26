@@ -16,7 +16,19 @@ class Course(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title, allow_unicode=True)
+        if not self.slug:
+            slug = slugify(self.title)
+            while True:
+                try:
+                    course = Course.objects.get(slug=slug)
+                    if course == self:
+                        self.slug = slug
+                        break
+                    else:
+                        slug = slug + '-'
+                except:
+                    self.slug = slug
+                    break
         return super(Course, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -38,9 +50,21 @@ class Lesson(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title, allow_unicode=True)
-        return super(Lesson, self).save(*args, **kwargs)
-
+        if not self.slug:
+            slug = slugify(self.title)
+            while True:
+                try:
+                    lesson = Lesson.objects.get(slug=slug)
+                    if lesson == self:
+                        self.slug = slug
+                        break
+                    else:
+                        slug = slug + '-'
+                except:
+                    self.slug = slug
+                    break
+        return super(Course, self).save(*args, **kwargs)
+    
     def get_absolute_url(self):
         return reverse('lesson-list')
 
