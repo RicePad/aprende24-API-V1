@@ -1,8 +1,11 @@
 # Pull base image
-FROM python:3.7-slim
+FROM python:3.8-alpine
 
 #Copy current directory
 COPY . /app/
+
+#set current directory
+WORKDIR /app
 
 #Run dependacies
 RUN pip install --no-cache-dir -r requirements/dev.txt
