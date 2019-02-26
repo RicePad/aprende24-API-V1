@@ -1,22 +1,15 @@
 # Pull base image
-FROM python:3.7-alpine
+FROM python:3.7-slim
 
-
-ENV PYTHONDONTWRITEBYTECODE 1
-
-WORKDIR /app
-
+#Copy current directory
 COPY . /app/
 
-RUN apk --update add libxml2-dev libxslt-dev libffi-dev gcc musl-dev libgcc openssl-dev curl
-RUN apk add jpeg-dev zlib-dev freetype-dev lcms2-dev openjpeg-dev tiff-dev tk-dev tcl-dev
-RUN pip install --upgrade pip 
+#set current directory
+WORKDIR /app
 
-RUN \
- apk add --no-cache postgresql-libs && \
- apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev && \
- python3 -m pip install -r requirements/dev.txt --no-cache-dir && \
- apk --purge del .build-deps
+#Run dependacies
+RUN pip install --upgrade pip
+RUN pip install -r requirements/dev.txt
 
 COPY ./docker/development/python/entrypoint.sh /entrypoint.sh
 
