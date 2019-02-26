@@ -1,5 +1,16 @@
 from video_service.settings.base import *
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'aprende24',
+        'USER': 'aprende24',
+        'HOST': 'postgres', # set in docker-compose.yml
+        'PORT': '5432' # default postgres port
+    }
+}
+
+
 DEBUG = True
 
 MEDIA_ROOT = MEDIA_DIR

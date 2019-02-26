@@ -6,6 +6,7 @@ COPY . /app/
 #set current directory
 WORKDIR /app
 
+#Run dependacies
 RUN pip install -r requirements/prod.txt
 
 COPY ./docker/production/python/entrypoint.sh /entrypoint.sh

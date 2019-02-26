@@ -329,3 +329,20 @@
         # cur = list1 or list2 
         # return dummy.next
         
+
+#remove duplicates from sorted array
+# list = [1,1,1,1,1,2,2,2,3,3,3,3,4,4,4,5,5,5,5]
+
+# def removeDuplicates(list):
+#     if not list:
+#         return 0
+    
+#     counter = 0 
+    
+#     for i in range(1,len(list)):
+#         if list[i] != list[counter]:
+#             counter = counter + 1
+#             list[counter] = list[i]
+#     return counter + 1
+
+# print(removeDuplicates(list))
