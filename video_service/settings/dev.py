@@ -5,7 +5,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'aprende24',
         'USER': 'aprende24',
-        'HOST': 'postgres', # set in docker-compose.yml
+        'HOST': 'db-dev', # set in docker-compose.yml
         'PORT': '5432' # default postgres port
     }
 }

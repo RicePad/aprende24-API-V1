@@ -1,5 +1,5 @@
 # Pull base image
-FROM python:3.8-alpine
+FROM python:3.4
 
 #Copy current directory
 COPY . /app/
@@ -8,7 +8,7 @@ COPY . /app/
 WORKDIR /app
 
 #Run dependacies
-RUN pip install --no-cache-dir -r requirements/dev.txt
+RUN pip install -r requirements/dev.txt
 
 COPY ./docker/development/python/entrypoint.sh /entrypoint.sh
 

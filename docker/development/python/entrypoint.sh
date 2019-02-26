@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "running"
 
 python manage.py flush --no-input
