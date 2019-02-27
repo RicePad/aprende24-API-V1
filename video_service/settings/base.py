@@ -48,7 +48,9 @@ INSTALLED_APPS = [
     'django_extensions',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount', # new
+    'allauth.socialaccount',
+    'storages',
+
 
 
     
@@ -102,18 +104,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'video_service.wsgi.application'
 
+
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'HOST': 'postgres', # set in docker-compose.yml
+        'NAME': 'aprende24',
+        'USER': 'aprende24',
+        'HOST': 'db-dev', # set in docker-compose.yml
         'PORT': '5432' # default postgres port
     }
 }
+
 
 # DATABASES = {
 #     'default': {
@@ -174,9 +178,8 @@ STATICFILES_DIR = [
 
 STATIC_ROOT = "/static_files/"
 #MEDIA files
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = "/media/"
-
+MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = '/media/'
 
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -215,3 +218,5 @@ LOGGING = {
         },
     },
 } 
+
+

@@ -16,7 +16,19 @@ class Course(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title, allow_unicode=True)
+        if not self.slug:
+            slug = slugify(self.title)
+            while True:
+                try:
+                    course = Course.objects.get(slug=slug)
+                    if course == self:
+                        self.slug = slug
+                        break
+                    else:
+                        slug = slug + '-'
+                except:
+                    self.slug = slug
+                    break
         return super(Course, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -30,17 +42,29 @@ class Lesson(models.Model):
     title = models.CharField(max_length=120)
     course = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True)
     position = models.IntegerField()
-    thumbnail_image = models.ImageField(upload_to="media/")
-    video_file_path = models.FileField(upload_to="media/", validators=[FileExtensionValidator(allowed_extensions=['mp4','mkv','mov', 'avi', 'flv', 'mpg','wmv'])])
+    thumbnail_image = models.ImageField(upload_to="thumbnail_images/")
+    video_file_path = models.FileField(upload_to="video_files/", validators=[FileExtensionValidator(allowed_extensions=['mp4','mkv','mov', 'avi', 'flv', 'mpg','wmv'])])
     slug = models.SlugField(unique=True)
 
     def __str__(self):
         return self.title
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title, allow_unicode=True)
-        return super(Lesson, self).save(*args, **kwargs)
-
+        if not self.slug:
+            slug = slugify(self.title)
+            while True:
+                try:
+                    lesson = Lesson.objects.get(slug=slug)
+                    if lesson == self:
+                        self.slug = slug
+                        break
+                    else:
+                        slug = slug + '-'
+                except:
+                    self.slug = slug
+                    break
+        return super(Course, self).save(*args, **kwargs)
+    
     def get_absolute_url(self):
         return reverse('lesson-list')
 

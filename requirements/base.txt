@@ -8,3 +8,5 @@ python-dotenv
 django-allauth
 django-extensions
 tuspy
+boto3
+django-storages

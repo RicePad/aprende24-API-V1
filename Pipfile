@@ -9,13 +9,16 @@ gunicorn = "==19.9.0"
 psycopg2-binary = "*"
 pillow = "*"
 djangorestframework= "*"
-djoser= "*"
+djoser = "*"
 requests= "*"
-python-dotenv= "*"
+python-dotenv = "*"
 django-allauth = "*"
+tuspy = "*"
+django-extensions  = "*"
+boto3 = "*"
+django-storages = "*"
 
 [dev-packages]
-psycopg2 = "*"
 
 [requires]
 python_version = "3.7"
