@@ -63,7 +63,7 @@ class Lesson(models.Model):
                 except:
                     self.slug = slug
                     break
-        return super(Course, self).save(*args, **kwargs)
+        return super(Lesson, self).save(*args, **kwargs)
     
     def get_absolute_url(self):
         return reverse('lesson-list')
