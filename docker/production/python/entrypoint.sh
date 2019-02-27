@@ -1,4 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 
-echo "Running command '$*'"
-exec /bin/bash -c "$*"
+echo "running"
+
+python manage.py flush --no-input
+python manage.py migrate
+python manage.py collectstatic --no-input
+
+exec "$@"
