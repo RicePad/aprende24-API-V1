@@ -4,6 +4,7 @@ services:
     build:
       context: .
       dockerfile: docker/development/python/Dockerfile.dev
+    command: python /app/manage.py runserver 0.0.0.0:8000
     environment:
       - PYTHONUNBUFFERED=1
     volumes:
@@ -14,10 +15,17 @@ services:
       - 2000:8000
     expose:
       - 8000
-    command: python /app/manage.py runserver 0.0.0.0:8000
+    environment:
+      - SECRET_KEY=please_change_me
+      - SQL_ENGINE=django.db.backends.postgresql
+      - SQL_DATABASE=postgres
+      - SQL_USER=postgres
+      - SQL_PASSWORD=postgres
+      - SQL_HOST=db
+      - SQL_PORT=5432
     depends_on:
-      - db-dev
-  db-dev:
+      - db
+  db:
     image: postgres:10.1-alpine
     volumes:
       - pgdata:/var/lib/postgresql/data/

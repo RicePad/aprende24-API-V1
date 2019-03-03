@@ -111,24 +111,12 @@ WSGI_APPLICATION = 'video_service.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'aprende24',
-        'USER': 'aprende24',
-        'HOST': 'db-dev', # set in docker-compose.yml
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'db', # set in docker-compose.yml
         'PORT': '5432' # default postgres port
     }
 }
-
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'aprende24db',
-#         'USER':'postgres',
-#         'PASSWORD':'hello123',
-#         'HOST':'localhost',
-#         'PORT':'5431',
-#     }
-# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
