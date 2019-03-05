@@ -4,6 +4,7 @@
   "description": "The largest selection of video tutorials in Latin America",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon -w webpack.config.js -x webpack-dev-server",
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,5 +22,10 @@
   "dependencies": {
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3"
+  },
+  "devDependencies": {
+    "i": "^0.3.6",
+    "nodemon": "^1.18.10",
+    "webpack-dev-server": "^3.2.1"
   }
 }
