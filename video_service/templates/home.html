@@ -1,8 +1,14 @@
 {% extends "base.html" %}
+{% load static %}
+
 
 {% block content %}
-
   <h1>Welcome to Aprende24 </h1>
+  <h1> Hi <span id='other'></span></h1>
+  <script src="{% static 'page2.js' %}" charset="utf-8"></script>
+
+
+
       {% if user.is_authenticated %}
        <h1> Hi {{ user.email }}!</h1>
         <h1>
@@ -15,3 +21,4 @@
         <a href="{% url 'account_signup' %}">Sign Up</a>
       {% endif %}
 {% endblock %}
+

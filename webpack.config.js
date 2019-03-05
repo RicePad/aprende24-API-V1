@@ -1,6 +1,9 @@
 module.exports = {
     mode: 'development',
-    entry: './video_service/static/js/index.js',
+    entry: {
+      page1: './video_service/static/js/index.js',
+      page2: './video_service/static/js/app.js',
+    },
     module: {
       rules: [
         {
@@ -16,7 +19,8 @@ module.exports = {
               presets: ['@babel/preset-env', '@babel/preset-react']
             },
           },
-        },     
+        },
+        
       ],
     }
   }
