@@ -16,7 +16,6 @@ db.sqlite3
 /bash.sh
 /video_service/settings/prod.py
 /video_service/settings/debug.log
-dist
 node_modules
 
 
