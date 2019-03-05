@@ -16,7 +16,6 @@ from django.urls import reverse_lazy
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
-STATIC_DIR = os.path.join(BASE_DIR, "static")
 MEDIA_DIR = os.path.join(BASE_DIR, "media")
 
 # Quick-start development settings - unsuitable for production
@@ -157,14 +156,15 @@ USE_TZ = True
 
 
 
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
-STATIC_URL = '/static/'
-STATICFILES_DIR = [
-    STATIC_DIR
-]
-
+STATIC_URL = 'http://127.0.0.1:8080/'
+# Add these new lines
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+    'dist',
+)
 STATIC_ROOT = "/static_files/"
+
 #MEDIA files
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'

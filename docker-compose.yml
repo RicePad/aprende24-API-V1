@@ -27,6 +27,13 @@ services:
       - SQL_PORT=5432
     depends_on:
         - db
+  client:
+    build:
+      context: .
+      dockerfile: docker/development/nodejs/Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
 
 volumes:
   postgres_data:

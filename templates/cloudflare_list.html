@@ -1,7 +1,0 @@
-
-{% for cloudflare in cloudflare_info %}
-    <!-- {{ cloudflare }} -->
-    <img src="{{cloudflare.thumbnail}}" width="250" height="250" alt="">
-    <stream src="{{cloudflare.uid}}" controls preload height="240px" width="480px"></stream>
-    <script data-cfasync="false" defer type="text/javascript" src="https://embed.cloudflarestream.com/embed/r4xu.fla9.latest.js?video={{cloudflare.uid}}"></script>
-{% endfor %}
