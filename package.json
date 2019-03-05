@@ -1,0 +1,25 @@
+{
+  "name": "aprende24",
+  "version": "1.0.0",
+  "description": "The largest selection of video tutorials in Latin America",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RicePad/aprende24.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RicePad/aprende24/issues"
+  },
+  "homepage": "https://github.com/RicePad/aprende24#readme",
+  "dependencies": {
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
+  }
+}
