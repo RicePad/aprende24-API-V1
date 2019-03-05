@@ -1,3 +1,5 @@
+import '../css/hello.css';
+
 const name = document.getElementById('name');
 const counter = document.getElementById('counter');
 let count = 0;

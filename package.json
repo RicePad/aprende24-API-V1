@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/RicePad/aprende24#readme",
   "dependencies": {
+    "css-loader": "^2.1.0",
+    "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3"
   },
