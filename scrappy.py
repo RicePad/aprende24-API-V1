@@ -283,7 +283,7 @@
 #     return not stack
 
 
-#parenthesis checker
+#20. Valid Parentheses Checker
 # string = "()"
 # hash_table = {
 #     ")": "(",
@@ -307,7 +307,7 @@
 # print(not stack)
 
 
-#merge two sorted two sorted LinkedList
+#21. Merge Two Sorted LinkedLists
 
 # class ListNode:
 #     def __init__(self, x):
@@ -330,7 +330,7 @@
         # return dummy.next
         
 
-#remove duplicates from sorted array
+#26. Remove Duplicates from Sorted Array
 # list = [1,1,1,1,1,2,2,2,3,3,3,3,4,4,4,5,5,5,5]
 
 # def removeDuplicates(list):
@@ -346,3 +346,54 @@
 #     return counter + 1
 
 # print(removeDuplicates(list))
+
+# 28. Implement strStr() or needle in a haystack
+# def strStr(self, haystack, needle):
+#     if len(needle) > len(haystack):
+#         return -1
+        
+#     if len(needle) == 0:
+#              return 0
+#     for i in range(len(haystack) - len(needle) + 1):
+#         for j in range(len(needle)):
+#             if haystack[i+j] != needle[j]:
+#                 break
+#         else:
+#             return i
+#         return -1
+
+
+
+# 53. Maximum Subarray
+
+# def maxSubArray(self,num_list):
+#         maxSum = num_list[0]
+#         currentSum = 0
+        
+#         for i in range(len(num_list)):
+#             currentSum = currentSum + num_list[i]
+            
+#             if currentSum > maxSum:
+#                 maxSum = currentSum
+                
+#             if currentSum < 0:
+#                 currentSum = 0
+#         return maxSum
+
+
+# 66. Plus One
+# digits = [1,2,5]
+
+# def plusOne(digits):
+#     length_digits = len(digits) #output 3
+#     for i in range(length_digits-1, -1, -1):
+#         if digits[i] < 9:
+#             digits[i] = digits[i] + 1
+#             return digits
+#         else:
+#             digits[i] = 0
+#     return digits.insert(1,0)
+
+
+# addOne = plusOne(digits)
+# print(addOne)

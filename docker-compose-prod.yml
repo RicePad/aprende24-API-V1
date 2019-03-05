@@ -28,7 +28,15 @@ services:
       - static_files:/static_files
       - media_volume:/app/media
     ports:
-      - 8080:80
+      - 7000:80
+  client:
+    build:
+      context: .
+      dockerfile: docker/production/nodejs/Dockerfile
+    volumes:
+      - /app/node_modules
+      - .:/app
+
 
 volumes:
   pgdata:
