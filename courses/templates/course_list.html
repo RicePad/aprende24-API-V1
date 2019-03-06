@@ -1,7 +1,13 @@
 {% extends "base.html"%}
+{% load static %}
 
 {% block content %}
+
   <h1>Course List </h1>
+  
+  <div id="ui-card">
+     <script src="{% static 'page3.js' %}" charset="utf-8"></script>
+  </div>
   {% for course in course_list %}
     <h1>
       <a href="{% url 'courses:course-detail' slug=course.slug %}">  {{ course.title }}</a>

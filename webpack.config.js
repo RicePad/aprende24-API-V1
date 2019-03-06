@@ -3,6 +3,7 @@ module.exports = {
     entry: {
       page1: './video_service/static/js/index.js',
       page2: './video_service/static/js/app.js',
+      page3: './video_service/static/js/uicard.js',
     },
     module: {
       rules: [
