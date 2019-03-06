@@ -2,7 +2,7 @@ import React from 'react';
 
 class Name extends React.Component{
     render(){
-        return<div>I CHANGED THIS WITH A REACT CLASS COMPONENT</div>
+        return<div>I CHANGED THIS With A REACT CLASS COMPONENT</div>
     }
 }
 
